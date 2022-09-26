@@ -3,37 +3,28 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 9,
-    tags: ["tag1", "tag2", "tag3"],
+    tags: [],
   };
+
+  renderTags() {
+    if (this.state.tags.length === 0) return <p>There is no tags!</p>;
+
+    return (
+      <ul>
+        {this.state.tags.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+  }
 
   render() {
     return (
       <div>
-        <span className={this.getBatchClasses()}>{this.formatCount()}</span>
-        <button
-          style={{ fontSize: 30, fontWeight: 700, color: "yellow" }}
-          className="badge badge-primary btn-sm"
-        >
-          Increment
-        </button>
-
-        <ul>
-          {this.state.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        {this.state.tags.length === 0 && 'please create a new tag!'}
+        {this.renderTags()}
       </div>
     );
-  }
-  getBatchClasses() {
-    let classes = "badge m-2 badge-";
-    classes += this.state.count === 9 ? "warning" : "primary";
-    return classes;
-  }
-
-  formatCount() {
-    const { count } = this.state;
-    return count === 9 ? <h1>Nine</h1> : count;
   }
 }
 
