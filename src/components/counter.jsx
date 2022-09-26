@@ -6,10 +6,9 @@ class Counter extends Component {
   };
 
   render() {
-    let classes = this.getBatchClasses();
     return (
       <div>
-        <span className={classes}>{this.formatCount()}</span>
+        <span className={this.getBatchClasses()}>{this.formatCount()}</span>
         <button
           style={{ fontSize: 30, fontWeight: 700, color: "yellow" }}
           className="badge badge-primary btn-sm"
