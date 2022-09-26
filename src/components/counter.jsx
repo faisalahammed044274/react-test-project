@@ -6,8 +6,7 @@ class Counter extends Component {
   };
 
   render() {
-    let classes = "badge m-2 badge-";
-    classes += this.state.count === 9 ? "warning" : "primary";
+    let classes = this.getBatchClasses();
     return (
       <div>
         <span className={classes}>{this.formatCount()}</span>
@@ -20,6 +19,12 @@ class Counter extends Component {
       </div>
     );
   }
+  getBatchClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 9 ? "warning" : "primary";
+    return classes;
+  }
+
   formatCount() {
     const { count } = this.state;
     return count === 9 ? <h1>Nine</h1> : count;
